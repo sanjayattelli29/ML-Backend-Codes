@@ -172,6 +172,16 @@ if HAS_TORNADO and HAS_STREAMLIT:
         # We need to insert these handlers BEFORE the default Streamlit catch-all
         # Tornado processes handlers in order.
         
+        new_handlers = []
+        for path, target in routes:
+            # Create a specific handler for this route
+            handler = tornado.web.URLSpec(path, ProxyHandler, dict(target_url=target))
+            new_handlers.append(handler)
+            print(f"   Mapped {path} -> {target}")
+            
+        # Also map wildcard routes for sub-resources if needed, e.g. /models/.*
+        new_handlers.append(tornado.web.URLSpec(r"/models/(.*)", ProxyHandlerMapModels, dict(base_url="http://127.0.0.1:5000/models/")))
+
         # Use public API to add handlers
         # We mount them to match ANY host (.*)
         print("🔧 Injecting Proxy Routes via add_handlers...")
