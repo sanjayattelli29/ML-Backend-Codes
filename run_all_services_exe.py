@@ -172,31 +172,10 @@ if HAS_TORNADO and HAS_STREAMLIT:
         # We need to insert these handlers BEFORE the default Streamlit catch-all
         # Tornado processes handlers in order.
         
-        existing_handlers = app.handlers[0][1] # Host pattern ".*"
-        
-        # Check if we already mounted handlers to avoid duplicate mounting on reruns
-        if getattr(app, "_proxy_mounted", False):
-            return
-
-        print("🔧 Injecting Proxy Routes for API access...")
-        
-        new_handlers = []
-        for path, target in routes:
-            # Create a specific handler for this route
-            handler = tornado.web.URLSpec(path, ProxyHandler, dict(target_url=target))
-            new_handlers.append(handler)
-            print(f"   Mapped {path} -> {target}")
-            
-        # Also map wildcard routes for sub-resources if needed, e.g. /models/.*
-        # This requires more careful regex
-        new_handlers.append(tornado.web.URLSpec(r"/models/(.*)", ProxyHandlerMapModels, dict(base_url="http://127.0.0.1:5000/models/")))
-
-        # Insert at the beginning
-        # app.add_handlersOr similar... but we want them robustly locally
-        # The easiest way with the Server instance is usually direct manipulation
-        
-        # Prepend our handlers to the list
-        app.handlers[0][1][:0] = new_handlers
+        # Use public API to add handlers
+        # We mount them to match ANY host (.*)
+        print("🔧 Injecting Proxy Routes via add_handlers...")
+        app.add_handlers(r".*", new_handlers)
         
         app._proxy_mounted = True
         print("✅ Proxy Routes Mounted Successfully!")
