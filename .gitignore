@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+.DS_Store
+saved_models/
+dist/
+build/
+*.spec
+DataVizAI_Temp/
+local_storage/
