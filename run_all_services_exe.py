@@ -140,15 +140,19 @@ if HAS_TORNADO and HAS_STREAMLIT:
         import gc
         from streamlit.web.server.server import Server
 
-        # Find the active Streamlit Server instance
-        server_instance = None
+        # Find the Tornado Application instance using multiple strategies
+        app = None
+        
+        # Strategy 1: Search for the Tornado Application object directly
+        # This is the most consistent way effectively
+        from tornado.web import Application
         for obj in gc.get_objects():
-            if isinstance(obj, Server):
-                server_instance = obj
+            if isinstance(obj, Application):
+                app = obj
                 break
         
-        if not server_instance:
-            print("❌ Could not find Streamlit Server instance to mount proxies.")
+        if not app:
+            print("❌ Could not find Tornado Application instance to mount proxies.")
             return
 
         # Define the routes to proxy
@@ -163,7 +167,7 @@ if HAS_TORNADO and HAS_STREAMLIT:
             # Add more routes as needed (regex matching can be used for more complex paths)
         ]
 
-        app = server_instance._tornado_app
+        # app = server_instance._tornado_app  <-- Removed, we already have app from GC lookup
         
         # We need to insert these handlers BEFORE the default Streamlit catch-all
         # Tornado processes handlers in order.
