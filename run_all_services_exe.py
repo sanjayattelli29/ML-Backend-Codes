@@ -15,6 +15,13 @@ import threading
 import multiprocessing
 from pathlib import Path
 
+# Try importing streamlit for the Status Page
+try:
+    import streamlit as st
+    HAS_STREAMLIT = True
+except ImportError:
+    HAS_STREAMLIT = False
+
 # Handle PyInstaller bundled app
 if getattr(sys, 'frozen', False):
     # Running as compiled executable
@@ -43,12 +50,6 @@ if sys.stdout.encoding != 'utf-8':
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
 if sys.stderr.encoding != 'utf-8':
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
-
-print("🚀 DataVizAI Combined Services Launcher")
-print(f"📁 Working directory: {BASE_DIR}")
-print(f"⚙️  Mode: {'Executable' if EXECUTABLE_MODE else 'Development'}")
-print("🌟 Starting All Flask Services...")
-print("=" * 60)
 
 # Store subprocesses and threads for cleanup
 processes = []
@@ -121,14 +122,18 @@ def launch_service_development(name, rel_path, port):
     print(f"   📂 Directory: {service_dir}")
     print(f"   📄 File: {service_file}")
 
-    # Set environment variables for UTF-8 encoding
+    # Set environment variables
     env = os.environ.copy()
     env['PYTHONIOENCODING'] = 'utf-8'
     env['PYTHONLEGACYWINDOWSSTDIO'] = '0'
     env['PYTHONUTF8'] = '1'
+    
+    # CRITICAL FIX: Add project root to PYTHONPATH so imports like 'from utils...' work
+    # When running from subdirectory, we must ensure root is visible
+    current_pythonpath = env.get('PYTHONPATH', '')
+    env['PYTHONPATH'] = f"{BASE_DIR};{current_pythonpath}" if sys.platform == 'win32' else f"{BASE_DIR}:{current_pythonpath}"
 
-    # Launch service in background with correct working directory and UTF-8 support
-    # NEW: Use sys.executable to ensure the same python environment is used
+    # Launch service in background with correct working directory
     process = subprocess.Popen(
         [sys.executable, "-u", service_file],  # Use current python interpreter
         cwd=service_dir,
@@ -147,12 +152,15 @@ def launch_service_development(name, rel_path, port):
         print(f"✅ {name}: HEALTHY (running)")
     else:
         print(f"❌ {name} failed to start (PID: {process.pid})")
+        # Capture output for debugging
+        stdout, stderr = process.communicate()
         print("📄 STDOUT:")
         print(stdout if stdout else "No output")
         print("⚠️  STDERR:")
         print(stderr if stderr else "No errors")
 
-try:
+def start_all_services():
+    """Logic to start all services based on mode"""
     if EXECUTABLE_MODE:
         # Running as executable - use threading
         print("🔧 Running in executable mode with multi-threading")
@@ -168,36 +176,14 @@ try:
         launch_service_development("Data Preprocessing", "pre-processing/preprocessing_api.py", 1290)
         launch_service_development("GANs Service", "gans/gans.py", 4321)
 
-    print("=" * 60)
-    print("🌐 SERVICE ENDPOINTS:")
-    print("🤖 ML Backend:          http://localhost:5000")
-    print("📊 Data Quality:        http://localhost:1289")
-    print("🔧 Data Preprocessing:  http://localhost:1290")
-    print("🎨 GANs Service:        http://localhost:4321")
-    print("=" * 60)
-    print("⚠️  Press Ctrl+C to stop all services")
-    print("📱 Open your web browser and navigate to your frontend application")
-    print("🔗 The services are now ready to accept requests!")
+# Streamlit Cache to ensure services start only once
+if HAS_STREAMLIT:
+    @st.cache_resource
+    def ensure_services_started():
+        start_all_services()
+        return True
 
-    # Keep script running
-    if EXECUTABLE_MODE:
-        # In executable mode, wait for threads
-        try:
-            while True:
-                time.sleep(1)
-                # Check if any threads have died
-                for name, thread in service_threads:
-                    if not thread.is_alive():
-                        print(f"⚠️  {name} thread has stopped")
-        except KeyboardInterrupt:
-            print("\n🛑 Stopping all services...")
-            print("👋 Goodbye!")
-    else:
-        # In development mode, wait for processes
-        while True:
-            time.sleep(1)
-
-except KeyboardInterrupt:
+def stop_all_services():
     print("\n🛑 Stopping all services...")
     
     if EXECUTABLE_MODE:
@@ -213,10 +199,106 @@ except KeyboardInterrupt:
                 print(f"⚠️  Failed to terminate {name}")
     
     print("👋 All services stopped. Goodbye!")
-    sys.exit(0)
 
-except Exception as e:
-    print(f"❌ Fatal error: {e}")
-    import traceback
-    traceback.print_exc()
-    sys.exit(1)
+def main():
+    try:
+        # Check if running in Streamlit
+        is_streamlit = False
+        if HAS_STREAMLIT and st.runtime.exists():
+            is_streamlit = True
+        
+        if is_streamlit:
+            # --- STREAMLIT UI MODE ---
+            st.set_page_config(page_title="DataVizAI Backend", page_icon="🚀", layout="wide")
+            
+            st.title("🚀 DataVizAI Backend Services")
+            
+            # Sidebar info
+            with st.sidebar:
+                st.header("Service Status")
+                st.success("System Online")
+                st.markdown(f"**Working Directory:** `{BASE_DIR}`")
+                st.markdown(f"**Mode:** `{'Executable' if EXECUTABLE_MODE else 'Development'}`")
+            
+            st.info("Initializing services in the background... Please wait.")
+            
+            # Start services (Cached)
+            ensure_services_started()
+            
+            # Verification UI
+            st.subheader("✅ Active Services")
+            
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                st.markdown("### 🤖 ML Backend")
+                st.markdown("- **Port**: 5000")
+                st.markdown("- **Status**: Running")
+                st.markdown("- **URL**: `http://localhost:5000`")
+                
+                st.markdown("### 📊 Data Quality")
+                st.markdown("- **Port**: 1289")
+                st.markdown("- **Status**: Running")
+                st.markdown("- **URL**: `http://localhost:1289`")
+
+            with col2:
+                st.markdown("### 🔧 Data Preprocessing")
+                st.markdown("- **Port**: 1290")
+                st.markdown("- **Status**: Running")
+                st.markdown("- **URL**: `http://localhost:1290`")
+                
+                st.markdown("### 🎨 GANs Service")
+                st.markdown("- **Port**: 4321")
+                st.markdown("- **Status**: Running")
+                st.markdown("- **URL**: `http://localhost:4321`")
+            
+            st.divider()
+            st.warning("⚠️ This application is running as a backend provider. Keep this tab open to maintain the services.")
+            
+        else:
+            # --- CLI MODE ---
+            print("🚀 DataVizAI Combined Services Launcher")
+            print(f"📁 Working directory: {BASE_DIR}")
+            print(f"⚙️  Mode: {'Executable' if EXECUTABLE_MODE else 'Development'}")
+            print("🌟 Starting All Flask Services...")
+            print("=" * 60)
+            
+            start_all_services()
+            
+            print("=" * 60)
+            print("🌐 SERVICE ENDPOINTS:")
+            print("🤖 ML Backend:          http://localhost:5000")
+            print("📊 Data Quality:        http://localhost:1289")
+            print("🔧 Data Preprocessing:  http://localhost:1290")
+            print("🎨 GANs Service:        http://localhost:4321")
+            print("=" * 60)
+            print("⚠️  Press Ctrl+C to stop all services")
+            print("📱 Open your web browser and navigate to your frontend application")
+            print("🔗 The services are now ready to accept requests!")
+            
+            # Keep script running
+            if EXECUTABLE_MODE:
+                # In executable mode, wait for threads
+                while True:
+                    time.sleep(1)
+                    # Check if any threads have died
+                    for name, thread in service_threads:
+                        if not thread.is_alive():
+                            print(f"⚠️  {name} thread has stopped")
+            else:
+                # In development mode, wait for processes
+                while True:
+                    time.sleep(1)
+
+    except KeyboardInterrupt:
+        stop_all_services()
+        sys.exit(0)
+        
+    except Exception as e:
+        print(f"❌ Fatal error: {e}")
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()

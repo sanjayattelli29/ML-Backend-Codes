@@ -43,3 +43,4 @@ deepecho
 torch
 jmespath
 s3transfer
+streamlit
