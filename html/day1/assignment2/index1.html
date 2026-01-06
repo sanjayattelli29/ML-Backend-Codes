@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Attelli Sanjay Kumar - Portfolio</title>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="styles1.css">
+
+    <style>
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background-color: #2e2835;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 5px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: #3498db;
+            transform: scale(1.05);
+        }
+
+        .nav-btn font {
+            color: inherit;
+        }
+
+        .card-table {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            background-color: white;
+            border: 1px solid #ddd;
+        }
+
+        .card-table:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        input[type=text],
+        input[type=email],
+        input[type=date],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 40%;
+        }
+
+        input[type=reset] {
+            background-color: #f44336;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 40%;
+        }
+
+        input[type=submit]:hover,
+        input[type=reset]:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <center>
+            <table width="45%" border="0" cellpadding="10" style="background-color: white; padding: 10px;">
+                <tr>
+                    <td align="center">
+                        <h2
+                            style="font-family: 'Verdana', sans-serif; text-transform: uppercase; letter-spacing: 3px; margin: 0;">
+                            <font color="black">My Portfolio</font>
+                        </h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <a href="#skills"><button class="nav-btn">Skills</button></a>
+                        <a href="#experience"><button class="nav-btn">Experience</button></a>
+                        <a href="#projects"><button class="nav-btn">Projects</button></a>
+                        <a href="#achievements"><button class="nav-btn">Achievements</button></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <a href="#form"><button class="nav-btn"
+                                style="padding: 6px 12px; font-size: 14px;">Form</button></a>
+                        <a href="#map"><button class="nav-btn"
+                                style="padding: 6px 12px; font-size: 14px;">Map</button></a>
+                        <a href="#tables"><button class="nav-btn"
+                                style="padding: 6px 12px; font-size: 14px;">Tables</button></a>
+                        <a href="#projects"><button class="nav-btn"
+                                style="padding: 6px 12px; font-size: 14px;">Video</button></a>
+                        <a href="#lists"><button class="nav-btn"
+                                style="padding: 6px 12px; font-size: 14px;">Lists</button></a>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </header>
+
+    <center>
+        <div class="main-content">
+            <table width="95%" border="0" cellpadding="20" style="margin-top: 20px;">
+                <tr>
+                    <td>
+                        <table width="100%" border="0" cellpadding="10" class="card-table"
+                            style="background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);">
+                            <tr>
+                                <td width="65%" valign="top">
+                                    <h1
+                                        style="color: #2e2835; font-size: 2.5em; margin-bottom: 10px; text-shadow: 1px 1px 2px #ddd;">
+                                        ATTELLI SANJAY KUMAR
+                                    </h1>
+                                    <h3 style="color: #555; font-weight: 300; font-style: italic;">
+                                        Software Developer | Full Stack Engineer
+                                    </h3>
+                                    <hr width="100%" style="height: 2px; background-color: #2e2835; border: none;">
+
+                                    <p style="font-size: 1.1em; line-height: 1.8;">
+                                        <b>🔗 LinkedIn:</b> <a href="https://linkedin.com/in/attelli-sanjay-kumar"
+                                            style="color: #0077b5;">linkedin.com/in/attelli-sanjay-kumar</a><br>
+                                        <b>💻 GitHub:</b> <a href="https://github.com/sanjayattelli29"
+                                            style="color: #333;">github.com/sanjayattelli29</a><br>
+                                        <b>🌐 Portfolio:</b> <a href="https://designwithsanjay2.netlify.app"
+                                            style="color: #e67e22;">designwithsanjay.netlify.app</a><br>
+                                        <b>📧 Email:</b> <a href="mailto:attellisanjay29@gmail.com"
+                                            style="color: #c0392b;">attellisanjay29@gmail.com</a><br>
+                                        <b>📱 Phone:</b> +91 8919200290
+                                    </p>
+                                </td>
+                                <td width="35%" align="right" valign="top">
+                                    <img src="./images/myimage.jpg" width="300" height="300" alt="Attelli Sanjay Kumar"
+                                        style="border-radius: 50%; border: 5px solid #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.15); object-fit: cover;">
+                                </td>
+                            </tr>
+                        </table>
+
+                        <br><br>
+
+                        <table width="100%" class="card-table" cellpadding="20" style="background-color: #fff;">
+                            <tr>
+                                <td>
+                                    <h2 style="border-left: 5px solid #2e2835; padding-left: 15px;">
+                                        <font color="#2e2835">Quick Summary</font>
+                                    </h2>
+                                    <p style="font-size: 1.1em; color: #444;">
+                                        Passionate Software Developer skilled in <strong>Python</strong>,
+                                        <strong>Data Structures</strong> and <strong>Algorithms</strong>. Interested in
+                                        building scalable <strong>SaaS</strong> and
+                                        <strong>Gen AI</strong> applications with a focus on problem-solving and
+                                        efficiency.
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <br>
+
+                        <h2>
+                            <h2><a id="tables"></a>
+                                <font color="#2e2835">Education</font>
+                            </h2>
+                        </h2>
+
+                        <fieldset
+                            style="border: 2px solid #ddd; border-radius: 10px; background-color: white; padding: 20px;">
+                            <legend style="padding: 0 10px;"><b>
+                                    <font size="4" color="#2e2835">VNR VJIET Engineering College</font>
+                                </b></legend>
+                            <table width="100%" border="0" cellpadding="5">
+                                <tr>
+                                    <td><b>Degree:</b> Bachelor of Technology – Information Technology</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Location:</b> Telangana</td>
+                                </tr>
+                                <tr>
+                                    <td><b>CGPA:</b> <span
+                                            style="color: green; font-weight: bold; font-size: 1.2em;">8.51</span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Duration:</b> Nov 2022 – Present</td>
+                                </tr>
+                            </table>
+                        </fieldset>
+
+                        <br>
+
+                        <fieldset
+                            style="border: 2px solid #ddd; border-radius: 10px; background-color: white; padding: 20px;">
+                            <legend style="padding: 0 10px;"><b>
+                                    <font size="4" color="#2e2835">Sri Chaitanya Intermediate College</font>
+                                </b></legend>
+                            <table width="100%" border="0" cellpadding="5">
+                                <tr>
+                                    <td><b>Stream:</b> MPC (Mathematics, Physics, Chemistry)</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Location:</b> Telangana</td>
+                                </tr>
+                                <tr>
+                                    <td><b>CGPA:</b> <span
+                                            style="color: green; font-weight: bold; font-size: 1.2em;">9.31</span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Completion:</b> July 2022</td>
+                                </tr>
+                            </table>
+                        </fieldset>
+
+                        <br>
+
+                        <fieldset
+                            style="border: 2px solid #ddd; border-radius: 10px; background-color: white; padding: 20px;">
+                            <legend style="padding: 0 10px;"><b>
+                                    <font size="4" color="#2e2835">Sri Chaitanya School</font>
+                                </b></legend>
+                            <table width="100%" border="0" cellpadding="5">
+                                <tr>
+                                    <td><b>Qualification:</b> SSC (Secondary School Certificate)</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Location:</b> Telangana</td>
+                                </tr>
+                                <tr>
+                                    <td><b>CGPA:</b> <span
+                                            style="color: green; font-weight: bold; font-size: 1.2em;">10.0</span></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Completion:</b> May 2020</td>
+                                </tr>
+                            </table>
+                        </fieldset>
+
+                        <br>
+
+                        <h2 id="skills"
+                            style="border-bottom: 3px solid #3498db; display: inline-block; padding-bottom: 5px;">
+                            <font color="#2e2835">Skills Summary</font>
+                        </h2>
+
+                        <table width="100%" class="card-table" cellpadding="15">
+                            <tr style="background-color: #f1f8ff;">
+                                <td width="30%" style="font-weight: bold; color: #2980b9;">Programming Languages</td>
+                                <td>
+                                    <ul>
+                                        <li>Python</li>
+                                        <li>SQL</li>
+                                        <li>HTML</li>
+                                        <li>CSS</li>
+                                        <li>JavaScript</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #2980b9;">Web Development & APIs</td>
+                                <td>
+                                    <ul>
+                                        <li>React.js</li>
+                                        <li>Flask</li>
+                                        <li>AWS Lambda</li>
+                                        <li>n8n AI Agents</li>
+                                        <li>RapidAPI</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr style="background-color: #f1f8ff;">
+                                <td style="font-weight: bold; color: #2980b9;">Databases & Cloud</td>
+                                <td>
+                                    <ul>
+                                        <li>MongoDB</li>
+                                        <li>MySQL</li>
+                                        <li>AWS</li>
+                                        <li>Google Cloud</li>
+                                        <li>Render, Netlify, Vercel</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold; color: #2980b9;">Tools</td>
+                                <td>
+                                    <ul>
+                                        <li>VS Code</li>
+                                        <li>Git</li>
+                                        <li>Postman</li>
+                                        <li>Figma</li>
+                                        <li>Jupyter Notebook</li>
+                                        <li>Google Colab</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <br>
+
+                        <h2 id="experience">
+                            <font color="#2c3e50">Internship Experience</font>
+                        </h2>
+
+                        <fieldset
+                            style="border: 1px solid #3498db; border-left: 5px solid #3498db; background-color: #fff; border-radius: 5px;">
+                            <legend><b>
+                                    <font size="4" color="#2e2835">Aspireup (Remote) – UI Frontend Designer</font>
+                                </b></legend>
+                            <p><b>Duration:</b> August 2024 – October 2024</p>
+                            <p><b>Key Responsibilities:</b></p>
+                            <ul type="square">
+                                <li>Designed user-centric and visually compelling interfaces</li>
+                                <li>Developed fully responsive layouts</li>
+                                <li>Implemented interactive real-time updates</li>
+                            </ul>
+                        </fieldset>
+
+                        <br>
+
+                        <fieldset
+                            style="border: 1px solid #3498db; border-left: 5px solid #3498db; background-color: #fff; border-radius: 5px;">
+                            <legend><b>
+                                    <font size="4" color="#2e2835">Jacinth Paul Business Technologies Pvt Ltd – Web
+                                        Designer & Developer</font>
+                                </b></legend>
+                            <p><b>Duration:</b> April 2024 – June 2024</p>
+                            <p><b>Key Achievements:</b></p>
+                            <ul type="square">
+                                <li>Built Personalized Learning Pathways platform</li>
+                                <li>Developed interactive tutorials</li>
+                                <li>Used by 500+ students with 4.65 rating</li>
+                            </ul>
+                        </fieldset>
+
+                        <br>
+
+                        <h2 id="projects">
+                            <font color="#2e2835">Projects</font>
+                        </h2>
+
+                        <table width="100%" class="card-table" cellpadding="15">
+                            <tr>
+                                <td width="33%" valign="top">
+                                    <h3 style="color: #8e44ad;">Smart Data Analyser</h3>
+                                    <ul type="disc">
+                                        <li>Cloud-based SaaS for ETL, ML training, evaluation and deployment</li>
+                                        <li>Includes Gen AI and LLM-based insights</li>
+                                        <li><b>Tech Stack:</b> React.js, AWS Lambda, CI/CD, Razorpay, Cloud ML</li>
+                                    </ul>
+                                    <br>
+                                    <video width="100%" controls>
+                                        <source
+                                            src="https://res.cloudinary.com/dws3beqwu/video/upload/v1750513405/wli81fl1tsjg8ui0qovp.mp4"
+                                            type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <br><br>
+                                    <audio controls style="width: 100%;">
+                                        <source src="files/audio-for-video-editing-6-368970.mp3" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                                <td width="33%" valign="top">
+                                    <h3 style="color: #27ae60;">Agri Assist – Smart Farming Platform</h3>
+                                    <ul type="disc">
+                                        <li>Crop prediction and fertilizer recommendations</li>
+                                        <li><b>Models:</b> Random Forest, KNN, Naive Bayes, LightGBM</li>
+                                        <li><b>Tech Stack:</b> Machine Learning, JavaScript, AWS, MongoDB</li>
+                                    </ul>
+                                    <br>
+                                    <video width="100%" controls>
+                                        <source
+                                            src="https://res.cloudinary.com/dws3beqwu/video/upload/v1750513405/wli81fl1tsjg8ui0qovp.mp4"
+                                            type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <br><br>
+                                    <audio controls style="width: 100%;">
+                                        <source src="files/audio-for-video-editing-6-368970.mp3" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                                <td width="33%" valign="top">
+                                    <h3 style="color: #d35400;">StudyBuddy</h3>
+                                    <ul type="disc">
+                                        <li>Real-time collaboration platform for students</li>
+                                        <li><b>Features:</b> Chat, Notes, Whiteboard, Video Calls</li>
+                                        <li><b>Tech Stack:</b> React.js, Flask, Jitsi, Netlify, Render</li>
+                                    </ul>
+                                    <br>
+                                    <video width="100%" controls>
+                                        <source
+                                            src="https://res.cloudinary.com/dws3beqwu/video/upload/v1750513405/wli81fl1tsjg8ui0qovp.mp4"
+                                            type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <br><br>
+                                    <audio controls style="width: 100%;">
+                                        <source src="files/audio-for-video-editing-6-368970.mp3" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <br>
+
+                        <center>
+                            <h1 id="map">Image Map of India</h1>
+                            <img src="./images/india.jpeg" alt="Map of India" usemap="#india-map" width="400">
+                            <map name="india-map">
+                                <area shape="rect" coords="245,245,0,0" href="https://en.wikipedia.org/wiki/Delhi"
+                                    alt="Delhi" target="_blank">
+                                <area shape="poly" coords="530,412,522,410,533,418,524,419"
+                                    href="https://en.wikipedia.org/wiki/Kolkata" alt="Kolkata" target="_blank">
+                                <area shape="circle" coords="207,679,10" href="https://en.wikipedia.org/wiki/Bangalore"
+                                    alt="Bangalore" target="_blank">
+                                <area shape="rect" coords="128,545,139,542" href="https://en.wikipedia.org/wiki/Mumbai"
+                                    alt="Mumbai" target="_blank">
+                            </map>
+                        </center>
+
+                        <br>
+
+                        <h2>
+                            <font color="#2c3e50">Certifications</font>
+                        </h2>
+                        <div
+                            style="background-color: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                            <ul type="circle">
+                                <li><b>ReactJS</b> – The Complete ReactJS Course (Udemy)</li>
+                                <li><b>Python</b> by Guvi (Google Collaboration)</li>
+                                <li><b>Machine Learning with Python A to Z</b> (Udemy)</li>
+                                <li><b>Mastering Gemini AI</b> – Google (Udemy)</li>
+                            </ul>
+                        </div>
+
+                        <br>
+
+                        <h2 id="achievements">
+                            <font color="#2c3e50">Achievements</font>
+                        </h2>
+                        <table width="100%" class="card-table" cellpadding="10" bgcolor="#ecf0f1">
+                            <tr>
+                                <td>
+                                    <ul type="square">
+                                        <li>🥇 <b>Winner</b> – Webathon 3.0 (ACM VNRVJIET, Apr 2025)</li>
+                                        <li>🎯 <b>Finalist</b> – CourseVita Hackathon (Aug 2025)</li>
+                                        <li>🥉 <b>Second Runner-Up</b> – Developers Circle Webathon (Mar 2024)</li>
+                                        <li>📈 Grew <b>3k+ LinkedIn connections</b> by sharing design insights</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <br>
+
+                        <h2>
+                            <font color="#2c3e50">Volunteer & Extracurricular Activities</font>
+                        </h2>
+                        <div
+                            style="background-color: #fff; padding: 15px; border-radius: 8px; border-left: 4px solid #f39c12;">
+                            <ul type="disc">
+                                <li>Coding Team Member – <b>Google Developer Student Club</b></li>
+                                <li>Student Coordinator – <b>SMC Group</b></li>
+                                <li>Open Source Contributor</li>
+                                <li>Mentor – <b>Campus Coding Club</b></li>
+                                <li>Community Volunteer – <b>Tech for Good</b></li>
+                            </ul>
+                        </div>
+
+                        <br>
+
+                        <h2>
+                            <h2><a id="lists"></a>
+                                <font color="#2c3e50">Hobbies & Interests</font>
+                            </h2>
+                        </h2>
+                        <div
+                            style="background-color: #fff; padding: 15px; border-radius: 8px; border-right: 4px solid #9b59b6;">
+                            <ol>
+                                <li>Reading technology and personal development books</li>
+                                <li>Frontend UI/UX design</li>
+                                <li>Open-source contribution</li>
+                                <li>Startup ecosystem involvement</li>
+                            </ol>
+                        </div>
+
+                        <br>
+
+                        <h2>
+                            <font color="black">My Strengths</font>
+                        </h2>
+                        <table width="100%" border="0" cellpadding="15" cellspacing="5">
+                            <tr>
+                                <td width="33%" align="center"
+                                    style="background-color: #34495e; color: white; border-radius: 10px;">
+                                    <b>Communication</b><br>Clear & Effective
+                                </td>
+                                <td width="33%" align="center"
+                                    style="background-color: #e74c3c; color: white; border-radius: 10px;">
+                                    <b>Networking</b><br>Building Connections
+                                </td>
+                                <td width="34%" align="center"
+                                    style="background-color: #27ae60; color: white; border-radius: 10px;">
+                                    <b>Collaboration</b><br>Team Success
+                                </td>
+                            </tr>
+                        </table>
+
+                        <center>
+                            <p style="font-family: 'Georgia', serif; font-size: 18px; margin-top: 20px; color: #555;">
+                                <i>"Turning ideas into reality through effective communication and teamwork"</i>
+                            </p>
+                        </center>
+
+                        <br>
+
+                        <h2>
+                            <h2 id="form">
+                                <font color="black">Contact Me</font>
+                            </h2>
+                        </h2>
+                        <form
+                            style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                            <table width="100%" border="0" cellpadding="10" cellspacing="0">
+                                <tr>
+                                    <td width="30%"><b>Name:</b></td>
+                                    <td><input type="text" name="name" placeholder="Enter your full name" required></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Email:</b></td>
+                                    <td><input type="email" name="email" placeholder="Enter your email address"
+                                            required></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Date:</b></td>
+                                    <td><input type="date" name="date" value="2026-01-06"></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Gender:</b></td>
+                                    <td>
+                                        <input type="radio" name="gender" value="Male"> Male
+                                        <input type="radio" name="gender" value="Female"> Female
+                                        <input type="radio" name="gender" value="Other"> Other
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top"><b>Description:</b></td>
+                                    <td><textarea name="description" rows="5"
+                                            placeholder="Write your message here..."></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <input type="submit" value="Submit">
+                                        <input type="reset" value="Reset">
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </center>
+
+    <br>
+
+    <center>
+        <hr width="90%" style="border-top: 1px solid #ccc; height: 1px;">
+        <p style="padding: 20px;">
+            <font size="2" color="#2e2835">© 2026 | Designed by Attelli Sanjay Kumar</font>
+        </p>
+    </center>
+</body>
+
+</html>
